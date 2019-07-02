@@ -1,0 +1,24 @@
+之前的疑惑和总结：
+1.组建中仅仅使用了action他怎么知道用的是哪个reducer
+答： 每个action都有一个type，redux会遍历所有reducer找到相应type对相应的reducer
+2. const mapStateToProps = state=>{ // state 是什么
+  return {
+    num: state.num,
+    user: state.user,
+    currentOption: state.option
+  }
+}
+
+这个state是什么？
+答： 是一个对象，对象的属性是所有的reducer合并之后的键，例如
+const reducers = combineReducers({
+    num: numReducer,
+    option: optionReducer,
+    user: userReducer
+})
+对应的
+state = {
+    num: 20
+    option: 1
+    user: {name: "wang", age: 20
+}
